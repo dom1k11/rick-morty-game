@@ -1,5 +1,7 @@
 import { ArgsParser } from "./core/ParseArgs.js"
 import { GameCore } from "./core/GameCore.js"
+
+
 async function main() {
   try {
     const args = new ArgsParser(process.argv)

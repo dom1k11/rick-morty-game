@@ -7,7 +7,7 @@ export class GameCore {
   constructor(args) {
     this.n = args.n;
     this.random = new RandomProvider(this.n);
-    this.morty = new ClassicMorty(this.n, this.random);
+    this.morty = new args.mortyClass(this.n, this.random);
     this.stats = new GameStats();
     this.gameStarted = true;
   }
