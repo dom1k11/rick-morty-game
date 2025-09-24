@@ -3,35 +3,41 @@ import crypto from "crypto";
 export class RandomProvider {
   constructor(n) {
     this.n = n;
-    this.mortyValue = null;
-    this.key = null;
-    this.hmac = null;
   }
 
   generateHide() {
-    this.mortyValue = crypto.randomInt(0, this.n);
-    this.key = crypto.randomBytes(32);
-    this.hmac = crypto
-      .createHmac("sha3-256", this.key)
-      .update(this.mortyValue.toString())
+    this.mortyValue1 = crypto.randomInt(0, this.n);
+    this.key1 = crypto.randomBytes(32);
+    this.hmac1 = crypto
+      .createHmac("sha3-256", this.key1)
+      .update(this.mortyValue1.toString())
       .digest("hex");
-
-    return this.hmac;
+    return this.hmac1;
   }
 
-  revealKey() {
-    return { mortyValue: this.mortyValue, key: this.key.toString("hex") };
+  generateHide2() {
+    this.mortyValue2 = crypto.randomInt(0, this.n);
+    this.key2 = crypto.randomBytes(32);
+    this.hmac2 = crypto
+      .createHmac("sha3-256", this.key2)
+      .update(this.mortyValue2.toString())
+      .digest("hex");
+    return this.hmac2;
   }
 
-  verify(hmac, mortyValue, keyHex) {
+  reveal1() {
+    return { value: this.mortyValue1, key: this.key1.toString("hex") };
+  }
+
+  reveal2() {
+    return { value: this.mortyValue2, key: this.key2.toString("hex") };
+  }
+
+  verify(hmac, value, keyHex) {
     const recalculated = crypto
       .createHmac("sha3-256", Buffer.from(keyHex, "hex"))
-      .update(mortyValue.toString())
+      .update(value.toString())
       .digest("hex");
-
-    return {
-      recalculated,
-      honest: recalculated === hmac,
-    };
+    return { recalculated, honest: recalculated === hmac };
   }
 }

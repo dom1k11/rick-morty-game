@@ -9,7 +9,7 @@ describe("RandomProvider", () => {
     expect(typeof hmac).toBe("string");
     expect(hmac.length).toBeGreaterThan(0);
 
-    const { mortyValue, key } = random.revealKey();
+    const { value: mortyValue, key } = random.reveal1();
     expect(typeof mortyValue).toBe("number");
     expect(typeof key).toBe("string");
 
@@ -17,20 +17,23 @@ describe("RandomProvider", () => {
     expect(recalculated).toBe(hmac);
     expect(honest).toBe(true);
   });
-  it("should fail verification is the key wrong", () => {
+
+  it("should fail verification if the key is wrong", () => {
     const random = new RandomProvider(5);
     const hmac = random.generateHide();
-    const { mortyValue } = random.revealKey();
+    const { value: mortyValue } = random.reveal1();
+
     const wrongKey = "00".repeat(32);
     const { honest } = random.verify(hmac, mortyValue, wrongKey);
     expect(honest).toBe(false);
   });
+
   it("should fail verification with wrong mortyValue", () => {
     const random = new RandomProvider(5);
     const hmac = random.generateHide();
-    const { key } = random.revealKey();
+    const { key, value: correctValue } = random.reveal1();
 
-    const wrongValue = random.mortyValue + 1;
+    const wrongValue = correctValue + 1;
     const { honest } = random.verify(hmac, wrongValue, key);
 
     expect(honest).toBe(false);
