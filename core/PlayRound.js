@@ -59,4 +59,8 @@ export async function PlayRound(n, random) {
   } else {
     console.log(Dialogs.mortyWin());
   }
+  const stayed = rickFinalChoice === rickFirstChoice;
+  const win = rickFinalChoice === mortyValue1;
+
+  return { stayed, win };
 }

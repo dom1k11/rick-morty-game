@@ -18,7 +18,8 @@ export class GameCore {
     );
 
     while (this.gameStarted) {
-      await PlayRound(this.n, this.random);
+      const result = await PlayRound(this.n, this.random);
+  this.stats.addResult(result);
 
       let input;
       while (true) {

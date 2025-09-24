@@ -7,6 +7,12 @@ export class GameStats {
     this.winsStay = 0;
   }
 
+  addResult({ stayed, win }) {
+    this.rounds++;
+    if (stayed && win) this.winsStay++;
+    if (!stayed && win) this.winsSwitch++;
+  }
+
   showTable() {
     const table = new CliTable({
       head: ["Game results", "Rick switched", "Rick stayed"],
