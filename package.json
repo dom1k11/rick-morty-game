@@ -1,6 +1,6 @@
 {
   "name": "task-4",
-  "type" : "module",
+  "type": "module",
   "version": "1.0.0",
   "main": "task-4.js",
   "scripts": {
@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }

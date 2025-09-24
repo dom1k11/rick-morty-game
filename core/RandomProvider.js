@@ -3,6 +3,9 @@ import crypto from "crypto";
 export class RandomProvider {
   constructor(n) {
     this.n = n;
+    this.mortyValue = null;
+    this.key = null;
+    this.hmac = null;
   }
 
   generateHide() {
@@ -13,10 +16,22 @@ export class RandomProvider {
       .update(this.mortyValue.toString())
       .digest("hex");
 
-    console.log("key:", this.key.toString("hex"));
-    console.log("hmac:", this.hmac);
-    console.log("Gun Hidden in", this.mortyValue);
-
     return this.hmac;
+  }
+
+  revealKey() {
+    return { mortyValue: this.mortyValue, key: this.key.toString("hex") };
+  }
+
+  verify(hmac, mortyValue, keyHex) {
+    const recalculated = crypto
+      .createHmac("sha3-256", Buffer.from(keyHex, "hex"))
+      .update(mortyValue.toString())
+      .digest("hex");
+
+    return {
+      recalculated,
+      honest: recalculated === hmac,
+    };
   }
 }
