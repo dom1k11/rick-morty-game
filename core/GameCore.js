@@ -1,12 +1,14 @@
 import readlineSync from "readline-sync";
 import { RandomProvider } from "./RandomProvider.js";
 import { PlayRound } from "./PlayRound.js";
+import { GameStats } from "./Stats.js";
 
 export class GameCore {
   constructor(args) {
     this.n = args.n;
     this.mortyClassName = args.mortyClassName;
     this.random = new RandomProvider(this.n);
+    this.stats = new GameStats();
     this.gameStarted = true;
   }
 
@@ -30,6 +32,7 @@ export class GameCore {
       if (input.toLowerCase() === "n") {
         this.gameStarted = false;
         console.log("👋 Bye, Rick!");
+        this.stats.showTable();
       }
     }
   }
