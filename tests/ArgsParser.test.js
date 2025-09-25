@@ -24,7 +24,7 @@ describe("ArgsParser", () => {
   });
 
   it("should throw if Morty class is unknown", () => {
-    expect(() => new ArgsParser(["node", "index.js", "3", "EvilMorty"]))
-      .toThrow("Unknown Morty: EvilMorty");
+    expect(() => new ArgsParser(["node", "index.js", "3", "Morty"]))
+      .toThrow("Unknown Morty: Morty");
   });
 });
