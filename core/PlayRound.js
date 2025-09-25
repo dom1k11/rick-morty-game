@@ -74,8 +74,6 @@ export async function PlayRound(morty) {
     );
   }
 
-  console.log("Morty: D-do you wanna play another round (y/n)?");
-
   const stayed = rickFinalChoice === rickFirstChoice;
   const win = rickFinalChoice === (mortyValue1 + rickSeed) % n;
   return { stayed, win };

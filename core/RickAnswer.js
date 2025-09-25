@@ -1,5 +1,3 @@
-import { Dialogs } from "./Dialogs.js";
-
 import readlineSync from "readline-sync";
 
 export function RickAnswer(prompt, n) {

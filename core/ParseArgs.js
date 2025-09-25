@@ -1,8 +1,4 @@
-import { ClassicMorty } from "../morties/ClassicMorty.js";
-import { EvilMorty } from "../morties/EvilMorty.js";
-import { LazyMorty } from "../morties/LazyMorty.js";
-
-
+import { mortyRegistry } from "../morties/mortyRegistry.js";
 export class ArgsParser {
   constructor(argv) {
     if (argv.length < 4) {
@@ -16,16 +12,12 @@ export class ArgsParser {
       throw new Error("Number of boxes must be >= 3");
     }
 
-    const morties = {
-      ClassicMorty,
-      LazyMorty,
-      EvilMorty
-    };
+    const mortyClass = mortyRegistry[mortyClassName];
 
-    if (!morties[mortyClassName]) {
+    if (!mortyClass) {
       throw new Error(`Unknown Morty: ${mortyClassName}`);
     }
 
-    this.mortyClass = morties[mortyClassName]; 
+    this.mortyClass = mortyClass
   }
 }
