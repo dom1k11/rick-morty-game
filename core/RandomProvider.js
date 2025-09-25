@@ -16,7 +16,7 @@ export class RandomProvider {
   }
 
   generateHide2() {
-    this.mortyValue2 = crypto.randomInt(0, this.n);
+    this.mortyValue2 = crypto.randomInt(0, this.n - 1);
     this.key2 = crypto.randomBytes(32);
     this.hmac2 = crypto
       .createHmac("sha3-256", this.key2)
@@ -25,12 +25,24 @@ export class RandomProvider {
     return this.hmac2;
   }
 
-  reveal1() {
-    return { value: this.mortyValue1, key: this.key1.toString("hex") };
+  calcFairNumber(value, rickValue, n) {
+    return (value + rickValue) % n;
   }
 
-  reveal2() {
-    return { value: this.mortyValue2, key: this.key2.toString("hex") };
+  reveal1(rickValue) {
+    return {
+      value: this.mortyValue1,
+      key: this.key1.toString("hex"),
+      fairNumber: this.calcFairNumber(this.mortyValue1, rickValue, this.n),
+    };
+  }
+
+  reveal2(rickValue) {
+    return {
+      value: this.mortyValue2,
+      key: this.key2.toString("hex"),
+      fairNumber: this.calcFairNumber(this.mortyValue2, rickValue, this.n - 1),
+    };
   }
 
   verify(hmac, value, keyHex) {
