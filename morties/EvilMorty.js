@@ -16,8 +16,8 @@ export class EvilMorty extends AbstractMorty {
   }
 
   chooseBoxToRemove(rickChoice) {
-    this.hmac2 = this.random.generateHide2(); 
-    this.removedBox = this.gun; //acts like ClassicMorty, expect always removes box with the gun
+    this.hmac2 = this.random.generateHide2();
+    this.removedBox = this.gun;
 
     return this.hmac2;
   }

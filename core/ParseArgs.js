@@ -18,6 +18,6 @@ export class ArgsParser {
       throw new Error(`Unknown Morty: ${mortyClassName}`);
     }
 
-    this.mortyClass = mortyClass
+    this.mortyClass = mortyClass;
   }
 }
