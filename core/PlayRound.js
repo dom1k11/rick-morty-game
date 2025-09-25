@@ -54,13 +54,15 @@ export async function PlayRound(morty) {
     }.`
   );
 
-  console.log(`Morty: Aww man, my 2nd random value is ${mortyValue2}.`);
-  console.log(`Morty: KEY2=${key2}`);
-  console.log(
-    `Morty: Uh, okay, the 2nd fair number is (${rickSeed2} + ${mortyValue2}) % ${
-      n - 1
-    } = ${(mortyValue2 + rickSeed2) % (n - 1)}`
-  );
+  if (mortyValue2 !== null && key2 !== null) {
+    console.log(`Morty: Aww man, my 2nd random value is ${mortyValue2}.`);
+    console.log(`Morty: KEY2=${key2}`);
+    console.log(
+      `Morty: Uh, okay, the 2nd fair number is (${rickSeed2} + ${mortyValue2}) % ${
+        n - 1
+      } = ${(mortyValue2 + rickSeed2) % (n - 1)}`
+    );
+  }
 
   console.log(
     `Morty: You portal gun is in the box ${(mortyValue1 + rickSeed) % n}.`

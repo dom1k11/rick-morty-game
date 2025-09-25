@@ -7,6 +7,6 @@ export function RickAnswer(prompt, n) {
     if (!Number.isNaN(choice) && choice >= 0 && choice < n) {
       return choice;
     }
-    console.log(Dialogs.invalidChoice(n));
+    console.log("Wrong choice!");
   }
 }
