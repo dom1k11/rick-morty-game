@@ -21,7 +21,7 @@ export class LazyMorty extends AbstractMorty {
         break;
       }
     }
-    return null; 
+  return this.removedBox; 
   }
 
   revealAll() {
