@@ -1,19 +1,19 @@
+export class AbstractMorty {
+  constructor(n, random) {
+    this.n = n;
+    this.random = random;
+  }
 
-export class AbstractMorty{
-    constructor(n, random)
-    {
-        this.n = n;
-        this.random = random;
-    }
-
-    hidePortalGun()
-    {
+  hidePortalGun() {
     throw new Error("Not implemented");
-    }
-
-    chooseBoxToRemove(rickChoice, gun)
-    {
+  }
+  chooseBoxToRemove(rickChoice) {
     throw new Error("Not implemented");
-
-    }
+  }
+  revealAll() {
+    throw new Error("Not implemented");
+  }
+  verify() {
+    throw new Error("Not implemented");
+  }
 }

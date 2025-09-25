@@ -42,4 +42,19 @@ export class ClassicMorty extends AbstractMorty {
       removed: this.removedBox,
     };
   }
+
+  verifyAll() {
+    const check1 = this.random.verify(
+      this.hmac1,
+      this.random.mortyValue1,
+      this.random.key1.toString("hex")
+    );
+    const check2 = this.random.verify(
+      this.hmac2,
+      this.random.mortyValue2,
+      this.random.key2.toString("hex")
+    );
+
+    return { check1, check2 };
+  }
 }
