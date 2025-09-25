@@ -34,7 +34,7 @@ describe("GameStats", () => {
     const estStay = (stats.winsStay / stats.roundsStay).toFixed(3);
     const estSwitch = (stats.winsSwitch / stats.roundsSwitch).toFixed(3);
 
-    expect(estStay).toBe("0.500"); 
+    expect(estStay).toBe("0.500");
     expect(estSwitch).toBe("1.000");
   });
 });

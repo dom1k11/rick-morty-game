@@ -4,9 +4,9 @@ export const Dialogs = {
   mortyHmac: (hmac) =>
     `🤖 Morty: Just to make you sure that I do not lie! 🔒 HMAC1:${hmac}`,
   askRick: (n) =>
-    `🤖 Morty: Rick, enter your number [0,${n}) so you don't whine later that I cheated, okay?! 🤔 `,
+    `Morty: Rick, enter your number [0,${n}) so you don't whine later that I cheated, okay?! `,
   confirmRick: (input) =>
-    `🤖 Morty: Are you sure you want to stick with ${input}? Type the same or another! 🔄 `,
+    `Morty: Are you sure you want to stick with ${input}? Type the same or another! `,
   mortySecondCommit: () =>
     "🤖 Morty: Let’s generate another value now to select a box to remove. 🎲",
   mortyHmac2: (hmac) => `🤖 Morty: Here it is: 🔒 HMAC2:${hmac}`,
@@ -21,11 +21,12 @@ export const Dialogs = {
   rickOriginal: (hmac) => `🧪 Rick: Original HMAC was    ${hmac}`,
   rickRecalculated: (hmac) => `🧪 Rick: Recalculated HMAC is ${hmac}`,
   rickCheck2: (check) =>
-    `🧪 Rick: HMAC2 recalculated = ${check.recalculated} (${check.honest ? "✅ OK" : "❌ FAIL"})`,
+    `🧪 Rick: HMAC2 recalculated = ${check.recalculated} (${
+      check.honest ? "✅ OK" : "❌ FAIL"
+    })`,
   honest: () =>
     "✅ Morty was honest!\n😅 Rick: Yeah... You are not cheating Morty...",
-  cheated: () =>
-    "❌ Morty cheated!\n😡 Rick: Ha! They don’t match, you liar!",
+  cheated: () => "❌ Morty cheated!\n😡 Rick: Ha! They don’t match, you liar!",
   rickWin: () => "🎉 Rick: Ha Ha! Morty! You Loser! I won!!!! 🏆",
   mortyWin: () => "😎 Morty: Yeeeeeeeeeeah!!! You lost Rick! 💥",
   invalidChoice: (n) =>

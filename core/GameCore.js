@@ -7,7 +7,7 @@ export class GameCore {
     this.n = args.n;
     this.random = new RandomProvider(this.n);
     this.morty = new args.mortyClass(this.n, this.random);
-this.stats = new GameStats(this.n);
+    this.stats = new GameStats(this.n);
     this.gameStarted = true;
   }
 
@@ -19,12 +19,11 @@ this.stats = new GameStats(this.n);
     while (this.gameStarted) {
       const result = await PlayRound(this.morty);
       this.stats.addResult(result);
-      const input = askYesNo("👉 Do you want to play another round? (y/n): ");
+      const input = askYesNo("Do you want to play another round? (y/n): ");
       if (input === "n") {
         this.gameStarted = false;
         console.log("👋 Bye, Rick!");
         this.stats.showTable();
-
       }
     }
   }

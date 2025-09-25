@@ -21,7 +21,7 @@ export class LazyMorty extends AbstractMorty {
         break;
       }
     }
-  return this.removedBox; 
+    return this.removedBox;
   }
 
   revealAll() {
@@ -41,5 +41,6 @@ export class LazyMorty extends AbstractMorty {
       this.random.mortyValue1,
       this.random.key1.toString("hex")
     );
-    return { check1, check2: null };   }
+    return { check1, check2: null };
+  }
 }
