@@ -1,4 +1,5 @@
 import { ClassicMorty } from "../morties/ClassicMorty.js";
+import { EvilMorty } from "../morties/EvilMorty.js";
 import { LazyMorty } from "../morties/LazyMorty.js";
 
 
@@ -18,6 +19,7 @@ export class ArgsParser {
     const morties = {
       ClassicMorty,
       LazyMorty,
+      EvilMorty
     };
 
     if (!morties[mortyClassName]) {
