@@ -1,23 +1,10 @@
-import { mortyRegistry } from "../morties/mortyRegistry.js";
+import { validateArgs } from "../utils/validateArgs.js";
+import { loadMorty } from "../utils/loadMorty.js";
+
 export class ArgsParser {
-  constructor(argv) {
-    if (argv.length < 4) {
-      throw new Error("Usage: node index.js <boxes> <MortyClass>");
-    }
-
-    this.n = parseInt(argv[2], 10);
-    const mortyClassName = argv[3];
-
-    if (isNaN(this.n) || this.n < 3) {
-      throw new Error("Number of boxes must be >= 3");
-    }
-
-    const mortyClass = mortyRegistry[mortyClassName];
-
-    if (!mortyClass) {
-      throw new Error(`Unknown Morty: ${mortyClassName}`);
-    }
-
-    this.mortyClass = mortyClass;
+  static async parse(argv) {
+    const { n, mortyPath, mortyClassName } = validateArgs(argv);
+    const MortyClass = await loadMorty(mortyPath, mortyClassName);
+    return { n, mortyClass: MortyClass };
   }
 }
